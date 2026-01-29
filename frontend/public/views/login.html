@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Todo App Login Page</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <script src="app.js"></script>
+    </head>
+        <!-- <link href="/styles/login-page.css" rel="stylesheet"> -->
+    <body>
+        <h1>Login</h1>
+        <div>
+            
+            <form ng-submit="checkLoginDetails(username, password)">
+                <!-- add regX to username and password -->
+                <label>Username</label>
+                <input type="text" name="username">
+            
+                <label>Password</label>
+                <input type="password" name="password">
+
+                <!-- use angular to bring new register components when link is clicked -->
+                <!-- <a href="/registration.html">Register</a> -->
+                
+                <button class="btn btn-success w-100 py-2" type="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- <script src="" charset="utf-8"></script> -->
+    </body>
+</html>
