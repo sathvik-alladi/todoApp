@@ -15,7 +15,7 @@ app.use("/todos", todosRoutes);
 app.use("/auth", authenticateUserRoutes);
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join(process.cwd(), "../frontend/public/views/index.html"));
+    res.sendFile(path.join(process.cwd(), "../frontend/public/index.html"));
 });
 
 // app.get("/home", (req, res) => {
