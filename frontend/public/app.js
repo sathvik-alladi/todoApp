@@ -44,7 +44,7 @@ app.controller("todoController", function ($scope, $http) {
             });
     };
 
-    $scope.getAllTodos();
+    // $scope.getAllTodos();
 
     $scope.deleteTodo = function (id) {
         $http.delete("http://localhost:3000/todos/delete/" + id)
