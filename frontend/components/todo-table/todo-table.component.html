@@ -1,0 +1,18 @@
+<table border="1" ng-if="$ctrl.list.length">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Completed</th>
+        <th>Action</th>
+    </tr>
+    <tr ng-repeat="todo in $ctrl.list" on-delete="$ctrl.onDelete({id: todo.id})">
+        <td>{{ todo.id }}</td>
+        <td>{{ todo.title }}</td>
+        <td>{{ todo.description }}</td>
+        <td>{{ todo.is_completed }}</td>
+        <td>
+            <button ng-click="$ctrl.onDelete({id: todo.id})">Delete</button>
+        </td>
+    </tr>
+</table>
