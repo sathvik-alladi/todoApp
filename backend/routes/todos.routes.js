@@ -8,12 +8,14 @@ import { addTodo, updateTodo, deleteTodo, searchTodos, getAllTodos } from "../co
 
 const router = express.Router();
 
-router.post("/add", authenticateJWT, upload.single("image"), validateTodo, addTodo);
-//add verifyTodoOwner and authenticateJWT back for the delete route; removed it for time being:
+//add authenticateJWT back for the add route;
+router.post("/add", upload.single("image"), validateTodo, addTodo);
+//add verifyTodoOwner and authenticateJWT back for the delete route;
 router.delete("/delete/:id", deleteTodo);
-router.patch("/update/:id", authenticateJWT, verifyTodoOwner, upload.single("image"), updateTodo);
+//add verifyTodoOwner and authenticateJWT back for the update route;
+router.patch("/update/:id", upload.single("image"), updateTodo);
 router.get("/search", authenticateJWT, searchTodos);
-// add authenticateJWT back for the get all route; removed it for time being:
+// add authenticateJWT back for the get all route;
 router.get("/all", getAllTodos);
 
 export default router;

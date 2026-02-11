@@ -1,0 +1,18 @@
+<div class="flex justify-center p-10">
+    <fieldset class="fieldset bg-base-200 overflow-x-auto rounded-box border p-4 shadow-xl inline-block">
+        <legend class="fieldset-legend">Add New Todo</legend>
+        
+        <label class="label">Title</label>
+        <input type="name" class="input" ng-model="vm.todo.title"/>
+        
+        <label class="label">Description</label>
+        <input type="name" class="input" ng-model="vm.todo.description"/>
+
+        <!-- <label class="label">
+            <input type="checkbox" class="checkbox-sm" />
+            completed?
+        </label> -->
+        
+        <button class="btn btn-success mt-2" ng-click="vm.submitForm()">Submit</button>
+    </fieldset>
+</div>

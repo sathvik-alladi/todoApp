@@ -1,0 +1,26 @@
+<td class="px-6">{{ todo.id }}</td>
+<td class="px-6 font-bold">{{ todo.title }}</td>
+<td class="px-6">{{ todo.description }}</td>
+<td class="px-6">
+    <span class="badge" ng-class="todo.is_completed ? 'badge-success' : 'badge-ghost'">
+        {{ todo.is_completed }}
+    </span>
+</td>
+<td class="px-6">
+    <button class="btn btn-sm btn-error btn-outline" ng-click="onDelete({todo: todo})">
+        <span ng-if="!todo.isDeleted">Delete</span>
+        <span ng-if="todo.isDeleted">Deleted</span>
+    </button>
+</td>
+
+<style>
+    .deleted-row td {
+        background-color: #fee2e2 !important;
+        border-top: 2px solid red !important;
+        border-bottom: 2px solid red !important;
+        text-decoration: line-through;
+        color: #b91c1c !important;
+    }
+    .deleted-row td:first-child { border-left: 2px solid red !important; }
+    .deleted-row td:last-child { border-right: 2px solid red !important; }
+</style>

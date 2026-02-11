@@ -1,0 +1,18 @@
+<div>
+    <todo-header></todo-header>
+    
+    <refresh-button 
+        on-refresh="vm.deleteMarkedTodos()">
+    </refresh-button>
+
+    <todo-form
+        on-add="vm.addTodo(todo)">
+    </todo-form>
+    
+    <br/><br/>
+    
+    <todo-table 
+        list="vm.todos"
+        on-delete="vm.toggleDelete(todo)">
+    </todo-table>
+</div>

@@ -2,7 +2,8 @@ import db from "../db.js";
 
 export const addTodo = async (req, res) => {
   const { title, description } = req.body;
-  const userId = req.user.userId;
+  //!IMPORTANT - change once auth in frontend is done
+  const userId = req.user?.userId || 2;  // Temporary fallback
 
   let imagePath = null;
   if (req.file) {
@@ -100,10 +101,10 @@ export const searchTodos = async (req, res) => {
   }
 };
 
+//later, get image_path as well
 export const getAllTodos = async (req, res) => {
-  //const userId = req.user.userId;
-  //remove this later:
-  const userId = 1;
+  //!IMPORTANT - change once auth in frontend is done
+  const userId = req.user?.userId || 2;  // Temporary fallback
 
   try {
     const result = await db.query(

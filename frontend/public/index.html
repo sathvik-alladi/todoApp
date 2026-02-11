@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo App</title>
 
+    <!-- The DaisyUI Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <!-- The Tailwind Engine -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Force Light Mode so it doesn't turn dark/black -->
+    <script>document.documentElement.setAttribute('data-theme', 'light')</script>
+
     <!-- angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 
@@ -12,17 +19,18 @@
     <script src="app.js"></script>
 
     <!-- services -->
-    <script src="../services/todo.service.js"></script>
+    <script src="services/todo.service.js"></script>
 
-    <!-- controllers -->
-    <script src="../components/todo-app/todo-app.component.js"></script>
-    <script src="../components/refresh-button/refresh-button.component.js"></script>
-    <script src="../components/todo-header/todo-header.component.js"></script>
-    <script src="../components/todo-table/todo-table.component.js"></script>
+    <!-- components/directives -->
+    <script src="components/todo-app/todo-app.component.js"></script>
+    <script src="components/refresh-button/refresh-button.component.js"></script>
+    <script src="components/todo-header/todo-header.component.js"></script>
+    <script src="components/todo-table/todo-table.component.js"></script>
+    <script src="components/todo-table/todo-table-header/todo-table-header.directive.js"></script>
+    <script src="components/todo-table/todo-table-row/todo-table-row.directive.js"></script>
+    <script src="components/todo-form/todo-form.component.js"></script>
 </head>
 <body>
-    <todo-app>
-        
-    </todo-app>
+    <todo-app></todo-app>
 </body>
 </html>

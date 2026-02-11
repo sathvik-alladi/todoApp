@@ -3,5 +3,6 @@ app.component("todoTable", {
         list: "<",
         onDelete: "&"
     },
-    templateUrl: "todo-table.component.html"
+    controllerAs: "vm",
+    templateUrl: "components/todo-table/todo-table.component.html"
 });
