@@ -2,9 +2,18 @@
 <td class="px-6 font-bold">{{ todo.title }}</td>
 <td class="px-6">{{ todo.description }}</td>
 <td class="px-6">
-    <span class="badge" ng-class="todo.is_completed ? 'badge-success' : 'badge-ghost'">
-        {{ todo.is_completed }}
+    <span class="badge badge-soft" ng-class="todo.is_completed ? 'badge-success' : 'badge-ghost'">
+        {{ todo.is_completed ? 'Completed' : 'Pending' }}
     </span>
+</td>
+<td class="px-6">
+    <button 
+        class="btn btn-sm btn-neutral btn-outline" 
+        ng-click="editingTodo && editingTodo.id === todo.id ? onCancelEdit() : onEdit({todo: todo})" 
+        ng-disabled="editingTodo && editingTodo.id !== todo.id">
+        <span ng-if="!editingTodo || editingTodo.id !== todo.id">Update</span>
+        <span ng-if="editingTodo && editingTodo.id === todo.id">Cancel</span>
+    </button>
 </td>
 <td class="px-6">
     <button class="btn btn-sm btn-error btn-outline" ng-click="onDelete({todo: todo})">

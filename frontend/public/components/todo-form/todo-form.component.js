@@ -1,6 +1,8 @@
 app.component("todoForm", {
     bindings: {
-        onAdd: "&"
+        editingTodo: '<',
+        onSubmit: "&",
+        onCancel: "&"
     },
 
     controller: todoFormSubmission,
@@ -10,22 +12,51 @@ app.component("todoForm", {
 
 function todoFormSubmission() {
     var vm = this;
+    
     vm.todo = {
         title: "",
-        description: ""
-    }
+        description: "",
+        is_completed: false
+    };
+
+    vm.$onChanges = function(changes) {
+        if(changes.editingTodo && changes.editingTodo.currentValue) {
+            vm.todo = {
+                title: vm.editingTodo.title,
+                description: vm.editingTodo.description,
+                is_completed: vm.editingTodo.is_completed
+            };
+        } else if(changes.editingTodo && !changes.editingTodo.currentValue) {
+            vm.todo = {
+                title: "",
+                description: "",
+                is_completed: false
+            };
+        }
+    };
 
     vm.submitForm = function() {
         if(!vm.todo.title) {
             alert("title is required");
             return;
-        };
+        }
 
-        vm.onAdd({ todo: vm.todo });
-            
+        vm.onSubmit({ todo: vm.todo });
+        
         vm.todo = {
             title: "",
-            description: ""
+            description: "",
+            is_completed: false
         };
     };
-};
+
+    vm.cancelEdit = function() {
+        vm.todo = {
+            title: "",
+            description: "",
+            is_completed: false
+        };
+
+        vm.onCancel();
+    };
+}

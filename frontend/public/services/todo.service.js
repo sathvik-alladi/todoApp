@@ -1,28 +1,26 @@
 app.service("todoService", function($http) {
-    const basePath = "http://localhost:3000/todos/";
+    const baseUrl = "http://localhost:3000/todos/";
 
     this.getAllTodos = function() {
-        return $http.get(basePath + "all");
+        return $http.get(baseUrl + "all");
     };
     
     this.deleteTodo = function(id) {
-        return $http.delete(basePath + "delete/" + id);
+        return $http.delete(baseUrl + "delete/" + id);
     };
 
-    //later, add image_path
     this.addTodo = function(title, description) {
-        return $http.post(basePath + "add", {
-            title,
-            description
+        return $http.post(baseUrl + "add", {
+            title: title,
+            description: description
         });
-    }
+    };
 
-    //later, add image_path
-    this.updateTodo = function(title, description, is_completed) {
-        return $http.patch(basePath + "update", {
-            title,
-            description,
-            is_completed
+    this.updateTodo = function(id, title, description, is_completed) {
+        return $http.patch(baseUrl + "update/" + id, {
+            title: title,
+            description: description,
+            is_completed: is_completed
         });
-    }
+    };
 });

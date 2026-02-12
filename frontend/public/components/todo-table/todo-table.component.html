@@ -11,7 +11,10 @@
                 <tr todo-table-row
                     ng-repeat="todo in vm.list track by todo.id"
                     todo="todo"
+                    editing-todo="vm.editingTodo"
                     on-delete="vm.onDelete({todo: todo})"
+                    on-edit="vm.onEdit({todo: todo})"
+                    on-cancel-edit="vm.onCancelEdit({todo: todo})"
                     ng-class="{ 'deleted-row': todo.isDeleted }">
                 </tr>
             </tbody>

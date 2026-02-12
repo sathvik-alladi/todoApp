@@ -10,6 +10,7 @@ todoFunctions.$inject = ["todoService"];
 function todoFunctions(todoService) {
     var vm = this;
     vm.todos = [];
+    vm.editingTodo = null;
 
     vm.$onInit = function() {
         vm.getAllTodos();
@@ -54,16 +55,6 @@ function todoFunctions(todoService) {
         return Promise.all(deletePromises);
     };
 
-    // vm.deleteMarkedTodos = function() {
-    //     var todosToDelete = vm.todos.filter(function(todo) {
-    //         return todo.isDeleted === true;
-    //     });
-
-    //     todosToDelete.forEach(function(todo) {
-    //         return todoService.deleteTodo(todo.id);
-    //     })
-    // };
-
     vm.addTodo = function(todo) {
         return todoService.addTodo(todo.title, todo.description)
             .then(function(res) {
@@ -75,12 +66,30 @@ function todoFunctions(todoService) {
     };
 
     vm.updateTodo = function(todo) {
-        return todoService.updateTodo(todo.title, todo.description, todo.is_completed)
+        return todoService.updateTodo(todo.id, todo.title, todo.description, todo.is_completed)
             .then(function(res) {
+                vm.editingTodo = null;
                 vm.getAllTodos();
             })
             .catch(function(err) {
                 alert("Error updating todo: " + err);
             });
+    }
+
+    vm.editTodo = function(todo) {
+        vm.editingTodo = angular.copy(todo);
+    }
+
+    vm.cancelEdit = function() {
+        vm.editingTodo = null;
+    }
+
+    vm.handleFormSubmission = function(todo) {
+        if (vm.editingTodo) {
+            todo.id = vm.editingTodo.id;
+            vm.updateTodo(todo);
+        } else {
+            vm.addTodo(todo);
+        }
     }
 };

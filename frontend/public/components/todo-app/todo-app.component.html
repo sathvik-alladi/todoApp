@@ -1,18 +1,22 @@
-<div>
-    <todo-header></todo-header>
-    
-    <refresh-button 
-        on-refresh="vm.deleteMarkedTodos()">
-    </refresh-button>
+<div class="max-w-4xl mx-auto p-6">
+    <div class="flex justify-between border-b pb-4">
+        <todo-header></todo-header>
+        <refresh-button 
+            on-refresh="vm.deleteAndRefresh()">
+        </refresh-button>
+    </div>
 
     <todo-form
-        on-add="vm.addTodo(todo)">
+        editing-todo="vm.editingTodo"
+        on-submit="vm.handleFormSubmission(todo)"
+        on-cancel="vm.cancelEdit()">
     </todo-form>
-    
-    <br/><br/>
-    
+
     <todo-table 
         list="vm.todos"
-        on-delete="vm.toggleDelete(todo)">
+        editing-todo="vm.editingTodo"
+        on-delete="vm.toggleDelete(todo)"
+        on-edit="vm.editTodo(todo)"
+        on-cancel-edit="vm.cancelEdit()">
     </todo-table>
 </div>
